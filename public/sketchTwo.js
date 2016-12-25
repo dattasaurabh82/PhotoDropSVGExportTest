@@ -114,7 +114,7 @@ function drawSVG() {
     textarea.value = svg.outerHTML;
 
     window.xxx = svg;
-};
+}
 
 
 var initGUI = function() {
