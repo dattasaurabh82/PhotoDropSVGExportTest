@@ -40,7 +40,32 @@
         left: 5px;
         top: 500px;
         width: 1418px;
-        height: 200px;
+        height: 100px;
+    }
+    
+    #ntOne {
+        position: absolute;
+        left: 5px;
+        top: 610px;
+    }
+    
+    #ntTwo {
+        position: absolute;
+        left: 5px;
+        top: 630px;
+    }
+    
+    a {
+        color: lightpink;
+    }
+
+    p {
+        font-family: "Lucida Sans Unicode", "Lucida Grande";
+        font-style: normal;
+        font-size: 12px;
+    }
+    code{
+        background-color:lightpink;
     }
     </style>
 </head>
@@ -50,7 +75,27 @@
     <br>
     <textarea id="svg-as-text"></textarea>
     <br>
+    <p id="ntOne">Copy the generated SVG code to <a href="http://www.rapidtables.com/web/tools/svg-viewer-editor.htm">this link</a>. Save the svg from there.</p>
+    <br>
+    <p id="ntTwo"> Then in your terminal, go to the folder (where you downlaoded the .svg file)
+        <br> by dropping the folder in your terminal:
+        <br><br>
+        <code>
+            $ cd PATH/TO/YOUR/DOWNLAOD/FOLDER/OF/THE/SVG/FILE
+        </code>
+        <br><br>
+        Then run the following:
+        <br><br>
+        <code>
+            $ sed -i '' 's/version="1.1"/version="1.1" xmlns="http:\/\/www.w3.org\/2000\/svg"/g' yourFileName.svg
+        </code>
+        <br><br>
+        Or else it's still a valid SVG but due to lack of namespacing bug it doesn't show up properly.
+        <br>
+        The above code adds a namespace for the styling of SVG and makes it readable.
+        <br><br><br><br>
+    </p>
+
 </body>
 
 </html>
-
