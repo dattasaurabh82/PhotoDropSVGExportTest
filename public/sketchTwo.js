@@ -43,7 +43,7 @@ function draw() {
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {
-            var index = (x + y * video.width) * 4;
+            var index = (video.width - x + 1 + y * video.width) * 4;
 
             var r = video.pixels[index];
             var g = video.pixels[index + 1];
@@ -96,15 +96,14 @@ function drawSVG() {
                 fillValue = 'white';
             } else {
                 fillValue = 'black';
+                var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttributeNS(null, "fill", fillValue);
+                circle.setAttributeNS(null, "stroke", "none");
+                circle.setAttributeNS(null, "cx", x * vScale);
+                circle.setAttributeNS(null, "cy", y * vScale);
+                circle.setAttributeNS(null, "r", vScale/2);
+                svg.appendChild(circle);
             }
-
-            var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-            circle.setAttributeNS(null, "fill", fillValue);
-            circle.setAttributeNS(null, "stroke", "none");
-            circle.setAttributeNS(null, "cx", x * vScale);
-            circle.setAttributeNS(null, "cy", y * vScale);
-            circle.setAttributeNS(null, "r", vScale);
-            svg.appendChild(circle);
         }
     }
     var wrapper = document.getElementById('svg-wrapper');
@@ -114,7 +113,7 @@ function drawSVG() {
     textarea.value = svg.outerHTML;
 
     window.xxx = svg;
-};
+}
 
 
 var initGUI = function() {
