@@ -77,9 +77,11 @@ function drawSVG() {
     loadPixels();
 
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttributeNS(null, 'width', '640');
     svg.setAttributeNS(null, 'height', '480');
     svg.setAttributeNS(null, 'version', '1.1');
+    // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {
@@ -121,8 +123,6 @@ var initGUI = function() {
     gui.add(cp, 'Pixel_Size', 5, 20);
     gui.add(cp, 'Save_SVG');
 };
-
-
 
 var Controls = function() {
     this.Threshold = 80;
