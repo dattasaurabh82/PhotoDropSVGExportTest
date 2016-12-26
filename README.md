@@ -1,4 +1,4 @@
-# PhotoDropSVGExportTest
+# SVGExportTest
 
 It is a small p5Js experiment used to make patterns for stippling out of images and export them as svgs. 
 
