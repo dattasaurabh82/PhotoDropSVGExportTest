@@ -64,6 +64,7 @@ function draw() {
     }
 }
 
+var oldSVG;
 
 function drawSVG() {
     vScale = cp.Pixel_Size;
@@ -77,9 +78,11 @@ function drawSVG() {
     loadPixels();
 
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttributeNS(null, 'width', '640');
     svg.setAttributeNS(null, 'height', '480');
     svg.setAttributeNS(null, 'version', '1.1');
+    // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {
@@ -101,13 +104,17 @@ function drawSVG() {
                 circle.setAttributeNS(null, "stroke", "none");
                 circle.setAttributeNS(null, "cx", x * vScale);
                 circle.setAttributeNS(null, "cy", y * vScale);
-                circle.setAttributeNS(null, "r", vScale/2);
+                circle.setAttributeNS(null, "r", vScale / 2);
                 svg.appendChild(circle);
             }
         }
     }
     var wrapper = document.getElementById('svg-wrapper');
-    wrapper.appendChild(svg);
+    // wrapper.appendChild(svg);
+    var newWrapper = wrapper.cloneNode();
+    newWrapper.innerHTML = "";
+    newWrapper.appendChild(svg);
+    wrapper.parentNode.replaceChild(newWrapper, wrapper);
 
     var textarea = document.getElementById('svg-as-text');
     textarea.value = svg.outerHTML;
@@ -121,8 +128,6 @@ var initGUI = function() {
     gui.add(cp, 'Pixel_Size', 5, 20);
     gui.add(cp, 'Save_SVG');
 };
-
-
 
 var Controls = function() {
     this.Threshold = 80;
