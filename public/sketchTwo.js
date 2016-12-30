@@ -68,7 +68,7 @@ function draw() {
     }
 }
 
-var oldSVG;
+var literalSVGData;
 
 function drawSVG() {
     vScale = cp.Pixel_Size;
@@ -121,29 +121,31 @@ function drawSVG() {
     newWrapper.appendChild(svg);
     wrapper.parentNode.replaceChild(newWrapper, wrapper);
 
-    oldSVG = svg; // to be used later in save_svg func
 
-
-    // S]showing the svg xml code
+    // showing the svg xml code
     var textarea = document.getElementById('svg-as-text');
     textarea.value = svg.outerHTML;
 
     window.xxx = svg;
+
+    literalSVGData = svg.outerHTML; // to be used later in the saving function.. 
 }
 
 function Save_SVG(svg) {
+
     // downloading SVG
-    var svgBlob = new Blob([svg], {type:"image/svg+xml;charset=utf-8;base64"});
+    var svgBlob = new Blob([svg], {type:"image/svg+xml;charset=utf-8"});
     var svgUrl = URL.createObjectURL(svgBlob);
+    
+    
     console.log(svgUrl);
     var urlRef = document.getElementById('svgLink');
     urlRef.href = svgUrl;
     console.log(urlRef);
-    
     urlRef.download = "Untitled.svg";
-    // // document.body.appendChild(urlRef);
+    document.body.appendChild(urlRef);
     urlRef.click();
-    // document.body.removeChild(urlRef);
+    document.body.removeChild(urlRef);
 
 }
 
@@ -166,6 +168,6 @@ var Controls = function() {
     };
 
     this.Save_SVG = function() {
-        Save_SVG(oldSVG);
+        Save_SVG(literalSVGData);
     };
 };

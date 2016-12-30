@@ -34,16 +34,10 @@ canvas {
     border: 4px solid white;
 }
 
-#ntOne {
-    position: absolute;
-    left: 700px;
-    top: 520px;
-}
-
 #ntTwo {
     position: absolute;
     left: 700px;
-    top: 540px;
+    top: 520px;
 }
 
 a {
