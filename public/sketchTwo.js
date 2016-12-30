@@ -64,6 +64,7 @@ function draw() {
     }
 }
 
+var oldSVG;
 
 function drawSVG() {
     vScale = cp.Pixel_Size;
@@ -103,13 +104,17 @@ function drawSVG() {
                 circle.setAttributeNS(null, "stroke", "none");
                 circle.setAttributeNS(null, "cx", x * vScale);
                 circle.setAttributeNS(null, "cy", y * vScale);
-                circle.setAttributeNS(null, "r", vScale/2);
+                circle.setAttributeNS(null, "r", vScale / 2);
                 svg.appendChild(circle);
             }
         }
     }
     var wrapper = document.getElementById('svg-wrapper');
-    wrapper.appendChild(svg);
+    // wrapper.appendChild(svg);
+    var newWrapper = wrapper.cloneNode();
+    newWrapper.innerHTML = "";
+    newWrapper.appendChild(svg);
+    wrapper.parentNode.replaceChild(newWrapper, wrapper);
 
     var textarea = document.getElementById('svg-as-text');
     textarea.value = svg.outerHTML;
