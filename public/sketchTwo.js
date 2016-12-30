@@ -25,19 +25,22 @@ function setup() {
 
     cp = new Controls();
     gui = new dat.GUI();
+    // var gui = new dat.GUI( { autoPlace: false } );
+    // gui.domElement.id = 'gui';
+
     initGUI();
 }
 
 function draw() {
     background(255);
 
-    vScale = cp.Pixel_Size;
+    vScale = floor(cp.Pixel_Size);
 
 
     if (vScale != oldVScale) {
         video.size(width / vScale, height / vScale);
         oldVScale = vScale;
-        console.log(vScale);
+        // console.log(vScale);
     }
 
 
@@ -71,7 +74,7 @@ function draw() {
 var literalSVGData;
 
 function drawSVG() {
-    vScale = cp.Pixel_Size;
+    vScale = floor(cp.Pixel_Size);
 
     if (vScale != oldVScale) {
         video.size(width / vScale, height / vScale);
@@ -83,10 +86,11 @@ function drawSVG() {
 
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
+    svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
     svg.setAttributeNS(null, 'width', '640');
     svg.setAttributeNS(null, 'height', '480');
     svg.setAttributeNS(null, 'version', '1.1');
-    // svg.setAttributeNS(null, 'xmlns', 'http://www.w3.org/2000/svg');
+    
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {

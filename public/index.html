@@ -16,34 +16,9 @@
 </head>
 
 <body>
-    <div id="svg-wrapper">
-        <br>
-    </div>
+    <div id="svg-wrapper"></div>
     <a id="svgLink"></a>
     <textarea id="svg-as-text" placeholder="SVG  xml code will appear here"></textarea>
-    <br>
-    <p id="ntTwo"> In your terminal, go to the folder (where you downlaoded the .svg file)
-        <br> by dropping the folder in your terminal:
-        <br>
-        <br>
-        <code>
-            $ cd PATH/TO/YOUR/DOWNLAOD/FOLDER/OF/THE/SVG/FILE
-        </code>
-        <br>
-        <br> Then run the following:
-        <br>
-        <br>
-        <code>
-            $ sed -i '' 's/version="1.1"/version="1.1" xmlns="http:\/\/www.w3.org\/2000\/svg"/g' yourFileName.svg
-        </code>
-        <br>
-        <br> Or else it's still a valid SVG but due to lack of namespacing bug it doesn't show up properly.
-        <br> The above code adds a namespace for the styling of SVG and makes it readable.
-        <br>
-        <br>
-        <br>
-        <br>
-    </p>
 </body>
 
 </html>
