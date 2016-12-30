@@ -33,23 +33,3 @@ canvas {
     background-color: black;
     border: 4px solid white;
 }
-
-#ntTwo {
-    position: absolute;
-    left: 700px;
-    top: 520px;
-}
-
-a {
-    color: #2FA1D6;
-}
-
-p {
-    font-family: "Lucida Sans Unicode", "Lucida Grande";
-    font-style: normal;
-    font-size: 14px;
-    color: white;
-}
-code{
-    color: #2FA1D6;
-}
