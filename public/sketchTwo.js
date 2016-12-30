@@ -25,6 +25,9 @@ function setup() {
 
     cp = new Controls();
     gui = new dat.GUI();
+    // var gui = new dat.GUI( { autoPlace: false } );
+    // gui.domElement.id = 'gui';
+
     initGUI();
 }
 
