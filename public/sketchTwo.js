@@ -13,11 +13,13 @@ var svg;
 var counter = 0;
 
 function setup() {
-    createCanvas(640, 480);
+    var cnv = createCanvas(644, 480);
+    cnv.position(10, 10);
 
     pixelDensity(1);
 
     video = createCapture(VIDEO);
+    video.hide();
 
     noStroke();
 
@@ -31,9 +33,11 @@ function draw() {
 
     vScale = cp.Pixel_Size;
 
+
     if (vScale != oldVScale) {
         video.size(width / vScale, height / vScale);
         oldVScale = vScale;
+        console.log(vScale);
     }
 
 
@@ -109,6 +113,7 @@ function drawSVG() {
             }
         }
     }
+    // showing SVG
     var wrapper = document.getElementById('svg-wrapper');
     // wrapper.appendChild(svg);
     var newWrapper = wrapper.cloneNode();
@@ -116,16 +121,39 @@ function drawSVG() {
     newWrapper.appendChild(svg);
     wrapper.parentNode.replaceChild(newWrapper, wrapper);
 
+    oldSVG = svg; // to be used later in save_svg func
+
+
+    // S]showing the svg xml code
     var textarea = document.getElementById('svg-as-text');
     textarea.value = svg.outerHTML;
 
     window.xxx = svg;
 }
 
+function Save_SVG(svg) {
+    // downloading SVG
+    var svgBlob = new Blob([svg], {type:"image/svg+xml;charset=utf-8;base64"});
+    var svgUrl = URL.createObjectURL(svgBlob);
+    console.log(svgUrl);
+    var urlRef = document.getElementById('svgLink');
+    urlRef.href = svgUrl;
+    console.log(urlRef);
+    
+    urlRef.download = "Untitled.svg";
+    // // document.body.appendChild(urlRef);
+    urlRef.click();
+    // document.body.removeChild(urlRef);
+
+}
+
+
+
 
 var initGUI = function() {
     gui.add(cp, 'Threshold', 10, 200);
-    gui.add(cp, 'Pixel_Size', 5, 20);
+    gui.add(cp, 'Pixel_Size', 5, 10);
+    gui.add(cp, 'Show_SVG');
     gui.add(cp, 'Save_SVG');
 };
 
@@ -133,7 +161,11 @@ var Controls = function() {
     this.Threshold = 80;
     this.Pixel_Size = 8;
 
-    this.Save_SVG = function() {
+    this.Show_SVG = function() {
         drawSVG();
+    };
+
+    this.Save_SVG = function() {
+        Save_SVG(oldSVG);
     };
 };
