@@ -25,8 +25,6 @@ function setup() {
 
     cp = new Controls();
     gui = new dat.GUI();
-    // var gui = new dat.GUI( { autoPlace: false } );
-    // gui.domElement.id = 'gui';
 
     initGUI();
 }
@@ -50,7 +48,7 @@ function draw() {
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {
-            var index = (video.width - x + 1 + y * video.width) * 4;
+            var index = (video.width - x + y * video.width) * 4;
 
             var r = video.pixels[index];
             var g = video.pixels[index + 1];
@@ -90,7 +88,7 @@ function drawSVG() {
     svg.setAttributeNS(null, 'width', '640');
     svg.setAttributeNS(null, 'height', '480');
     svg.setAttributeNS(null, 'version', '1.1');
-    
+
 
     for (var y = 0; y < video.height; y++) {
         for (var x = 0; x < video.width; x++) {
@@ -132,7 +130,7 @@ function drawSVG() {
 
     window.xxx = svg;
 
-    literalSVGData = svg.outerHTML; // to be used later in the saving function.. 
+    literalSVGData = svg.outerHTML; // to be used later in the saving function..
 }
 
 function Save_SVG(svg) {
@@ -140,8 +138,8 @@ function Save_SVG(svg) {
     // downloading SVG
     var svgBlob = new Blob([svg], {type:"image/svg+xml;charset=utf-8"});
     var svgUrl = URL.createObjectURL(svgBlob);
-    
-    
+
+
     console.log(svgUrl);
     var urlRef = document.getElementById('svgLink');
     urlRef.href = svgUrl;
