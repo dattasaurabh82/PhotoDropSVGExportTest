@@ -90,8 +90,8 @@ function drawSVG() {
     svg.setAttributeNS(null, 'version', '1.1');
 
 
-    for (var y = 0; y < video.height; y+=2) {
-        for (var x = 0; x < video.width; x+=2) {
+    for (var y = 0; y < video.height; y++) {
+        for (var x = 0; x < video.width; x++) {
             var index = (x + y * video.width) * 4;
 
             var r = video.pixels[index];
