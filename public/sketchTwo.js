@@ -66,7 +66,7 @@ function draw() {
             }
 
             fill(fillValue);
-            ellipse(x * vScale, y * vScale, vScale - 2, vScale-2);
+            ellipse(x * vScale + 1 , y * vScale + 1, vScale, vScale);
         }
     }
 }
@@ -94,7 +94,7 @@ function drawSVG() {
 
     for (var y = 0; y < video.height; y+=2) {
         for (var x = 0; x < video.width; x+=2) {
-            var index = (x + y * video.width) * 4;
+            var index = (x + y * video.width + 1) * 4;
 
             var r = video.pixels[index];
             var g = video.pixels[index + 1];
@@ -110,9 +110,9 @@ function drawSVG() {
                 var circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
                 circle.setAttributeNS(null, "fill", fillValue);
                 circle.setAttributeNS(null, "stroke", "none");
-                circle.setAttributeNS(null, "cx", x * vScale);
-                circle.setAttributeNS(null, "cy", y * vScale);
-                circle.setAttributeNS(null, "r", (vScale / 2) -2);
+                circle.setAttributeNS(null, "cx", x * vScale + 1);
+                circle.setAttributeNS(null, "cy", y * vScale + 1);
+                circle.setAttributeNS(null, "r", (vScale / 2));
                 svg.appendChild(circle);
             }
         }
