@@ -90,8 +90,8 @@ function drawSVG() {
     svg.setAttributeNS(null, 'version', '1.1');
 
 
-    for (var y = 0; y < video.height; y++) {
-        for (var x = 0; x < video.width; x++) {
+    for (var y = 0; y < video.height; y+=2) {
+        for (var x = 0; x < video.width; x+=2) {
             var index = (x + y * video.width) * 4;
 
             var r = video.pixels[index];
@@ -110,7 +110,7 @@ function drawSVG() {
                 circle.setAttributeNS(null, "stroke", "none");
                 circle.setAttributeNS(null, "cx", x * vScale);
                 circle.setAttributeNS(null, "cy", y * vScale);
-                circle.setAttributeNS(null, "r", vScale / 2);
+                circle.setAttributeNS(null, "r", (vScale / 2));
                 svg.appendChild(circle);
             }
         }
