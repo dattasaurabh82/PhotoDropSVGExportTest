@@ -66,7 +66,7 @@ function draw() {
             }
 
             fill(fillValue);
-            ellipse(x * vScale, y * vScale, vScale, vScale);
+            ellipse(x * vScale, y * vScale, vScale -2, vScale-2);
         }
     }
 }
@@ -112,7 +112,7 @@ function drawSVG() {
                 circle.setAttributeNS(null, "stroke", "none");
                 circle.setAttributeNS(null, "cx", x * vScale);
                 circle.setAttributeNS(null, "cy", y * vScale);
-                circle.setAttributeNS(null, "r", vScale / 2);
+                circle.setAttributeNS(null, "r", (vScale / 2) -2);
                 svg.appendChild(circle);
             }
         }
