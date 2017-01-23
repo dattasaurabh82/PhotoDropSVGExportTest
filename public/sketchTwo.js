@@ -48,8 +48,8 @@ function draw() {
     loadPixels();
 
 
-    for (var y = 0; y < video.height; y++) {
-        for (var x = 0; x < video.width; x++) {
+    for (var y = 0; y < video.height; y+=2) {
+        for (var x = 0; x < video.width; x+=2) {
             var index = (video.width - x + 1 + y * video.width) * 4;
 
             var r = video.pixels[index];
@@ -66,7 +66,7 @@ function draw() {
             }
 
             fill(fillValue);
-            ellipse(x * vScale, y * vScale, vScale -2, vScale-2);
+            ellipse(x * vScale, y * vScale, vScale - 2, vScale-2);
         }
     }
 }
@@ -92,8 +92,8 @@ function drawSVG() {
     svg.setAttributeNS(null, 'version', '1.1');
     
 
-    for (var y = 0; y < video.height; y++) {
-        for (var x = 0; x < video.width; x++) {
+    for (var y = 0; y < video.height; y+=2) {
+        for (var x = 0; x < video.width; x+=2) {
             var index = (x + y * video.width) * 4;
 
             var r = video.pixels[index];
